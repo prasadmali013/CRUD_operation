@@ -1,0 +1,47 @@
+<div class="container mt-4" >
+    <div class="card">
+            <h1>CATEGORY MASTER</h1>
+    
+    <form>
+        <div class="form-group">
+          <label>Category Name</label>
+          <input type="text" [(ngModel)]="category_name" [ngModelOptions]="{standalone: true}" class="form-control" id="category_name" placeholder="Enter Name">
+        </div>
+        <br>
+    
+        
+
+    
+        <button type="submit" class="btn btn-primary mt-4" (click)="save()" >Save</button>
+       
+      </form>
+    </div>
+    
+  
+    
+        <div class="container mt-4" >
+            <h1>CATEGORY TABLE</h1>
+        <table class="table">
+            <thead>
+             <h1 *ngIf="!isResultLoaded">Loading.................</h1>      
+            <tr>
+                <th scope="col">category_id</th>
+                <th scope="col">category name</th>
+                  
+            </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let categoryItem of categoryArray">
+                <td>{{categoryItem.category_id}}</td>
+                <td>{{categoryItem.category_name}}</td>
+                
+                
+               <td>
+                  <button type="button" class="btn btn-success" (click)="setUpdate(categoryItem)">Edit</button>
+
+                  <button type="button" class="btn btn-danger" (click)="setDelete(categoryItem)">Delete</button>            
+                </td>
+              </tr>          
+            </tbody>
+          </table>
+        </div>

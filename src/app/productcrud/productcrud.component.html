@@ -1,0 +1,62 @@
+
+
+<div class="container mt-4" >
+    <div class="card">
+            <h1>PRODUCT MASTER</h1>
+    
+    <form>
+     
+        <div class="form-group">
+          <label>product Name</label>
+          <input type="text" [(ngModel)]="product_name" [ngModelOptions]="{standalone: true}" class="form-control" id="product_name" placeholder="Enter Name">
+        </div>
+        <br>
+    
+        <div class="form-group">
+          <label>category_id</label>
+          <input type="text" [(ngModel)]="category_id" [ngModelOptions]="{standalone: true}" class="form-control" id="category_id" placeholder="Enter id">
+        </div>
+        <br>
+       
+
+
+    
+        <button type="submit" class="btn btn-primary mt-4" (click)="save()" >Save</button>
+       
+      </form>
+    </div>
+    
+  
+    
+        <div class="container mt-4" >
+            <h1>PRODUCT TABLE</h1>
+        <table class="table">
+            <thead>
+             <h1 *ngIf="!isResultLoaded">Loading.................</h1>      
+            <tr>
+                <th scope="col">product_ID</th>
+                <th scope="col">product Name</th>
+                <th scope="col">category_id</th>
+                <th scope="col">category_name</th>
+
+            </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let productItem of productArray">
+                <td>{{productItem.product_id  }}</td>
+                <td>{{productItem.product_name }}</td>
+                <td>{{productItem.category_id}}</td>
+                <td>{{productItem.category_name}}</td>
+                
+               <td>
+                  <button type="button" class="btn btn-success" (click)="setUpdate(productItem)">Edit</button>
+                  <button type="button" class="btn btn-danger" (click)="setDelete(productItem)">Delete</button>            
+                </td>
+              </tr>          
+            </tbody>
+          </table>
+        </div>
+        <br>
+        <br>
+
+        <button (click)="categoryPage" > <a routerLink="/category">category page</a></button>
